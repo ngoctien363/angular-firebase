@@ -1,0 +1,67 @@
+$background-color: (#d3fbd9, #ffe4bd, #d9abfd, #fdf0ab);
+.production {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 24px;
+  &_item {
+    background-color: #ccc;
+    width: 350px;
+    height: 200px;
+    position: relative;
+    &-title {
+      position: absolute;
+      bottom: 0;
+      color: #fff;
+      padding: 10px;
+      &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+      }
+    }
+    img {
+      width: 350px;
+      height: 200px;
+    }
+  }
+}
+.color_product {
+  width: 15px;
+  height: 15px;
+  border-radius: 50px;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
+.product {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 255px;
+  height: 400px;
+  padding: 20px;
+  margin-top: 24px;
+  background-color: #ccc;
+  position: relative;
+  &_img {
+    width: 230px;
+    height: 230px;
+  }
+  &_icon-favourite {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 10px;
+  }
+  &_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+  }
+}
+@for $i from 1 to 5 {
+  .product#{$i} {
+    background-color: nth($background-color, $i);
+  }
+}

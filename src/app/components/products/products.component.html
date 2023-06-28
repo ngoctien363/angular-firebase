@@ -1,0 +1,42 @@
+<div class="production">
+  <div class="production_item">
+    <div class="production_item-title">
+      Clothing & Shoes
+    </div>
+    <img src="../../../assets/image/unsplash_mO-_iF_FkCk.jpg" alt="" />
+  </div>
+  <div class="production_item">
+    <div class="production_item-title">
+      Home & Living
+    </div>
+    <img src="../../../assets/image/unsplash_gDrUY7QUeng.jpg" alt="" />
+  </div>
+  <div class="production_item">
+    <div class="production_item-title">
+      Art & Collectibles
+    </div>
+    <img src="../../../assets/image/unsplash_q4LIvI9NN6Y.jpg" alt="" />
+  </div>
+</div>
+<!--LIST PRODUCTS-->
+<div class="product_list">
+  <div *ngFor="let product of this.produces" [ngClass]="'product' + product.id" class="product" >
+    <img src="../../../assets/image/Vector15.svg" alt="" class="product_icon-favourite" />
+    <img [src]="product.imagePath || ''" alt="" class="product_img" />
+    <div>
+      Colors
+      <div style="height: 10px;"></div>
+      <div style="display: flex; gap: 5px;">
+        <div *ngFor="let color of this.product.color" class="color_product">
+          <img [src]="color.url">
+        </div>
+      </div>
+    </div>
+    <div style="height: 20px;"></div>
+    <div>
+      {{product.text}}
+    </div>
+    <div style="height: 25px;"></div>
+    <div style="font-weight: 600;">{{product.price}}</div>
+  </div>
+</div>

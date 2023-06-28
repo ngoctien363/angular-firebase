@@ -1,0 +1,43 @@
+<div class="header">
+  <div class="block1">
+    <div class="header_logo">E-commerce</div>
+  </div>
+  <div class="block2">
+    <div class="header_search">
+      <select [(ngModel)]="selectedOption" class="header_select hidden">
+        <option value="allCategories">All Categories</option>
+        <option value="clothingShoes">Clothing & Shoes</option>
+        <option value="homeLiving">Home & Living</option>
+        <option value="weddingParty">Wedding & Party</option>
+        <option value="toysEntertainment">Toys & Entertainment</option>
+        <option value="artCollectibles">Art & Collectibles</option>
+        <option value="craftSuppliesTools">Craft Supplies & Tools</option>
+      </select>
+      <div class="header_search-input">
+        <input placeholder="Search anything" class="inputSearch">
+        <img src="../../../assets/image/Search_alt_duotone_line.png" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="block3">
+    <div class="header_btn-help hidden">
+      Help
+    </div>
+    <div class="header_btn-account">
+      <img src="../../../assets/image/User.svg" alt="">
+      Account
+    </div>
+    <div class="header_btn-shopping">
+      <img src="../../../assets/image/Bag_alt.svg" alt="">
+      Shopping
+    </div>
+  </div>
+</div>
+
+<div class="header_category">
+  <div *ngFor="let item of menus" class="header_category-container" (click)="handleClick(item)">
+    <span *ngIf="item.selected" class="header_category-textSelected">{{item.title}}</span>
+    <span *ngIf="!item.selected" class="header_category-text">{{item.title}}</span>
+    <div *ngIf="item.selected" class="header_category-selected"></div>
+  </div>
+</div>

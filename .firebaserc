@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "ecommerce-firebase-b1282"
+  },
+  "targets": {
+    "ecommerce-firebase-b1282": {
+      "hosting": {
+        "ecommerce-firebase": [
+          "ecommerce-firebase-b1282"
+        ]
+      }
+    }
+  }
+}

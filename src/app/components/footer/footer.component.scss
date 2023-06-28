@@ -1,0 +1,156 @@
+.footer {
+  width: 1100px;
+  &_infor {
+    display: flex;
+    padding: 40px 10px;
+    &-left {
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+    }
+    &-right {
+      display: flex;
+      justify-content: space-around;
+      flex: 1;
+    }
+    &-logo {
+      color: #EB6D20;
+      font-weight: 600;
+    }
+    &-address {
+      width: 100px;
+    }
+    &-media {
+      display: flex;
+      gap: 10px;
+      cursor: pointer;
+    }
+    &-title {
+      font-weight: 600;
+    }
+    &-more {
+      display: flex;
+    }
+    &-moreRight {
+      flex: 1;
+      display: flex;
+      gap: 20px,
+    }
+  }
+}
+.widthMar {
+  width: 100px;
+}
+.scroll-top {
+  display: flex;
+  align-items: center;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .widthMar {
+    width: 0;
+  }
+  .footer {
+    width: auto;
+    &_infor {
+      flex-basis: 100%;
+      display: flex;
+      flex: 1;
+      width: 100%;
+      padding: 40px 10px;
+      &-left {
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+      }
+      &-right {
+        display: flex;
+        justify-content: space-around;
+        flex: 1;
+      }
+      &-logo {
+        color: #EB6D20;
+        font-weight: 600;
+      }
+      &-address {
+        width: 100px;
+      }
+      &-media {
+        display: flex;
+        gap: 10px;
+        cursor: pointer;
+      }
+      &-title {
+        font-weight: 600;
+      }
+      &-more {
+        display: flex;
+        gap: 20px;
+      }
+      &-moreRight {
+        flex: 1;
+        display: flex;
+        gap: 20px,
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .hidden {
+    display: none;
+  }
+  .footer {
+    width: auto;
+    &_infor {
+      flex-basis: 100%;
+      display: flex;
+      gap: 20px;
+      flex-direction: column;
+      flex: 1;
+      width: 100%;
+      padding: 40px 10px;
+      &-left {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 35px;
+      }
+      &-right {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        flex: 1;
+      }
+      &-logo {
+        font-size: 20px;
+        color: #EB6D20;
+        font-weight: 600;
+      }
+      &-address {
+        width: auto;
+      }
+      &-media {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        cursor: pointer;
+      }
+      &-title {
+        font-weight: 600;
+      }
+      &-more {
+        display: flex;
+      }
+      &-moreRight {
+        flex: 1;
+        display: flex;
+        gap: 20px,
+      }
+    }
+  }
+}
