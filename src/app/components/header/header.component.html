@@ -35,9 +35,7 @@
 </div>
 
 <div class="header_category">
-  <div *ngFor="let item of menus" class="header_category-container" (click)="handleClick(item)">
-    <span *ngIf="item.selected" class="header_category-textSelected">{{item.title}}</span>
-    <span *ngIf="!item.selected" class="header_category-text">{{item.title}}</span>
-    <div *ngIf="item.selected" class="header_category-selected"></div>
+  <div *ngFor="let cat of category$ | async" class="header_category-container" (click)="handleClick(cat.title)">
+    <span style="text-transform: uppercase;" class="header_category-textSelected">{{cat.title}}</span>
   </div>
 </div>

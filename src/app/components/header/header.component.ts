@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Category } from 'src/app/models/category';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +11,11 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
   selectedOption: string = 'allCategories';
   menus: Array<any> = [];
+  category$: Observable<Category[]>;
 
-  constructor(){
+  constructor( categoryService: CategoryService,){
+    this.category$ = categoryService.category$;
+    this.category$.subscribe(a => console.log(a, 'category'))
     this.menus.push(
       {
         title: 'Clothing & Shoes',
