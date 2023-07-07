@@ -3,16 +3,15 @@
           <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
       
           <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" #userEmail>
             <label for="floatingInput">Email address</label>
           </div>
           <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" #userPassword>
             <label for="floatingPassword">Password</label>
           </div>
       
           <div class="form-check text-start my-3">
-            <!-- <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault"> -->
             <label class="form-check-label" for="flexCheckDefault">
                 <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
               Remember me
@@ -21,9 +20,9 @@
                 Forgot password
             </a>
           </div>
-          <button class="btn btn-primary w-100 py-2" (click)="onClickSignIn()">Sign in</button>
+          <button class="btn btn-primary w-100 py-2" (click)="auth.SignIn(userEmail.value, userPassword.value)">Sign in</button>
           <div class="redirectToLogin pt-2">
-            <span>Don't have an account?<a class="redirect" [routerLink]="['sign-up']"> Sign Up</a></span>
+            <span>Don't have an account?<a class="redirect" (click)="onChangeSignUp()"> Sign Up</a></span>
           </div>
         </form>
       </main>

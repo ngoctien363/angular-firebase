@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 interface SigIn {
   Username: string;
@@ -20,15 +21,20 @@ export class SignInComponent implements OnInit{
 public isLoading: boolean = false;
 public errorMess: string = ''
 
-  constructor( private router: Router ) {
+  constructor( 
+    private router: Router,
+    public auth: AuthService,
+  ) {
 
   }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  ngOnInit(): void {}
 
-  onClickSignIn() {
-    this.router.navigate(['/productions'])
+  // onClickSignIn() {
+  //   this.router.navigate(['/productions'])
+  // }
+
+  onChangeSignUp() {
+    this.router.navigate(['/sign-up'])
   }
 
 }
