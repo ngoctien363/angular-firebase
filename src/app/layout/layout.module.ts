@@ -8,8 +8,10 @@ import { FooterComponent } from '../components/footer/footer.component';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     FormsModule,
     MatIconModule,
+    NzModalModule,
+    ReactiveFormsModule,
   ]
 })
 export class LayoutModule { }

@@ -20,7 +20,7 @@
                 Forgot password
             </a>
           </div>
-          <button class="btn btn-primary w-100 py-2" (click)="auth.SignIn(userEmail.value, userPassword.value)">Sign in</button>
+          <button class="btn btn-primary w-100 py-2" (click)="onClickSignIn(userEmail.value, userPassword.value)">Sign in</button>
           <div class="redirectToLogin pt-2">
             <span>Don't have an account?<a class="redirect" (click)="onChangeSignUp()"> Sign Up</a></span>
           </div>

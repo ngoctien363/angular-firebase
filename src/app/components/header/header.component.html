@@ -24,12 +24,22 @@
       Help
     </div>
     <div class="header_btn-account">
-      <img src="../../../assets/image/User.svg" alt="">
-      Account
-    </div>
+      <img src="../../../assets/image/User.svg" alt=""> {{userName}} </div> <!-- UserName -->
     <div class="header_btn-shopping">
       <img src="../../../assets/image/Bag_alt.svg" alt="">
       Shopping
+    </div>
+  </div>
+  <div class="block4">
+    <div class="sign-in" *ngIf="!authService?.isLoggedIn">
+        <div class="btn btn-sm" style="background-color: #EB6D20; color: #fff;" (click)="showModal()">
+          Sign in
+        </div>
+    </div>
+    <div class="sign-out" *ngIf="authService?.isLoggedIn">
+      <div class="btn btn-sm" style="background-color: #EB6D20; color: #fff;" (click)="authService.SignOut()">
+        Sign out
+      </div>
     </div>
   </div>
 </div>
@@ -39,3 +49,61 @@
     <span style="text-transform: uppercase;" class="header_category-textSelected">{{cat.title}}</span>
   </div>
 </div>
+<!-- Modal Sign In -->
+
+<div *ngTemplateOutlet="modalSignIn">
+</div>
+<ng-template #modalSignIn>
+  <nz-modal
+      [(nzVisible)]="isVisible"
+      nzTitle="Please sign in"
+      (nzOnCancel)="handleCancel()"
+      [nzOkLoading]="isLoading"
+      [nzFooter]="null"
+    >
+      <div *nzModalContent>
+        <div *ngTemplateOutlet="signIn"></div>
+        <ng-template #signIn>
+          <form>
+            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>      
+            <div class="form-floating">
+              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" #userEmail>
+              <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating">
+              <input type="password" class="form-control" id="floatingPassword" placeholder="Password" #userPassword>
+              <label for="floatingPassword">Password</label>
+            </div>
+            <button class="btn btn-primary w-100 py-2 my-2" (click)="handleSignIn(userEmail.value, userPassword.value)">Sign in</button>
+            <div class="redirectToLogin pt-2">
+              <span>Don't have an account?<a class="redirect"> Sign Up</a></span>
+            </div>
+          </form>
+        </ng-template>
+         <!-- ---------------------------------- -->
+         <div *ngIf="!signIn">
+          <div *ngTemplateOutlet="signUp"></div>
+          <ng-template #signUp>
+            <form>
+              <h1 class="h3 mb-3 fw-normal">Please sign up</h1>      
+              <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" #userEmail>
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" #userPassword>
+                <label for="floatingPassword">Password</label>
+              </div>
+              <button class="btn btn-primary w-100 py-2 my-2" (click)="handleSignIn(userEmail.value, userPassword.value)">Sign up</button>
+              <div class="redirectToLogin pt-2">
+                <span>Have an account?<a class="redirect"> Sign In</a></span>
+              </div>
+            </form>
+          </ng-template>
+         </div>
+      </div>
+    </nz-modal>
+</ng-template>
+
+<!-- Modal Sign Up -->
+

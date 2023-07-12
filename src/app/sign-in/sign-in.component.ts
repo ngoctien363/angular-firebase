@@ -29,9 +29,12 @@ public errorMess: string = ''
   }
   ngOnInit(): void {}
 
-  // onClickSignIn() {
-  //   this.router.navigate(['/productions'])
-  // }
+  onClickSignIn(acc: string, pass: string) {
+    this.auth.SignIn(acc, pass).then(() => {
+      localStorage.setItem('isAdmin', 'true')
+      this.isLoading = false;
+    });
+  }
 
   onChangeSignUp() {
     this.router.navigate(['/sign-up'])

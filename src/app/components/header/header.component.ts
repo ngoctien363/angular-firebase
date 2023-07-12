@@ -1,21 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from 'src/app/models/category';
+import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit, OnChanges {
   selectedOption: string = 'allCategories';
   menus: Array<any> = [];
   category$: Observable<Category[]>;
+  public isVisible = false;
+  isLoading = false;
+  userName: string | any;
+  userInfo!: User;
 
-  constructor( categoryService: CategoryService,){
+  constructor(
+    categoryService: CategoryService,
+    public authService: AuthService
+  ) {
+    if (this.authService.isLoggedIn) {
+      this.userInfo = JSON.parse(localStorage.getItem('user')!);
+      this.userName = this.userInfo?.email.split('@gmail.com')[0];
+    } else {
+      this.userName = "Account"
+    }
     this.category$ = categoryService.category$;
-    this.category$.subscribe(a => console.log(a, 'category'))
+    this.category$.subscribe((a) => a);
     this.menus.push(
       {
         title: 'Clothing & Shoes',
@@ -46,8 +61,34 @@ export class HeaderComponent {
         title: 'Craft Supplies & Tools',
         value: 'craftSuppliesTools',
         selected: false,
-      },
+      }
     );
+  }
+  ngOnChanges(changes: SimpleChanges): void {}
+  
+  ngOnInit(): void {
+  }
+
+  showModal(): void {
+    this.isVisible = true;
+  }
+
+  handleSignIn(acc: string, pass: string) {
+    this.isLoading = true;
+    this.authService.SignIn(acc, pass).then(() => {
+      localStorage.setItem('isAdmin', 'false')
+      this.isLoading = false;
+      this.handleCancel();
+      this.refresh()
+    });
+  }
+
+  refresh(): void {
+    window.location.reload();
+}
+
+  handleCancel(): void {
+    this.isVisible = false;
   }
 
   handleClick = (item: any) => {
@@ -58,5 +99,5 @@ export class HeaderComponent {
         category.selected = false;
       }
     });
-  }
+  };
 }
