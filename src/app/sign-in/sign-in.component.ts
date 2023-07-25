@@ -32,6 +32,7 @@ public errorMess: string = ''
   onClickSignIn(acc: string, pass: string) {
     this.auth.SignIn(acc, pass).then(() => {
       localStorage.setItem('isAdmin', 'true')
+      this.router.navigate(['dashboard']);
       this.isLoading = false;
     });
   }

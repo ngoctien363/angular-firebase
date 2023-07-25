@@ -6,11 +6,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
+  count: Array<any> = [];
+  newCount: Array<any> = [];
   produces: Array<any> = [];
 
   constructor() {
     this.getImageForProduces()
   }
+
+  checkItemCart() {
+    
+  }
+
+  addToCart(value: any) {
+    const arr = [];
+    arr.push({ ...value })
+    this.count.push(value)
+    return this.count
+    
+}
+
   getImageForProduces() {
     this.produces.push(
       {

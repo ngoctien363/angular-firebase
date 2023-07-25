@@ -28,7 +28,7 @@ export class AuthGuard implements CanActivate {
     if (isAdmin) {
       return true;
     }
-    this.router.navigate(['not-found'], { queryParams: { returnUrl: url }});
+    this.router.navigate(['not-found'], { skipLocationChange: true });
     return false;
 }
 }

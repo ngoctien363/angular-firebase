@@ -1,4 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Category } from 'src/app/models/category';
 import { User } from 'src/app/models/user';
@@ -21,7 +22,8 @@ export class HeaderComponent implements OnInit, OnChanges {
 
   constructor(
     categoryService: CategoryService,
-    public authService: AuthService
+    public authService: AuthService,
+    public router: Router,
   ) {
     if (this.authService.isLoggedIn) {
       this.userInfo = JSON.parse(localStorage.getItem('user')!);
@@ -77,6 +79,7 @@ export class HeaderComponent implements OnInit, OnChanges {
     this.isLoading = true;
     this.authService.SignIn(acc, pass).then(() => {
       localStorage.setItem('isAdmin', 'false')
+      this.router.navigate(['productions']);
       this.isLoading = false;
       this.handleCancel();
       this.refresh()

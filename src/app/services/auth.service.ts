@@ -50,7 +50,7 @@ export class AuthService {
         if(result){
           this.isLoggedIn = true;
           localStorage.setItem('user', JSON.stringify(result.user));
-          this.router.navigate(['productions'])
+          // this.router.navigate(['productions'])
         }
       })
       .catch((error) => { window.alert(error.message);

@@ -37,6 +37,9 @@
       {{product.text}}
     </div>
     <div style="height: 25px;"></div>
-    <div style="font-weight: 600;">{{product.price}}</div>
+    <div class="group-btn" style="display: flex; justify-content: space-between;">
+      <div style="font-weight: 600;">{{product.price}}</div>
+      <img src="../../../assets/image/shopping-cart.png" (click)="addToCart(product)" alt="" width="30px" style="cursor: pointer;"/>
+    </div>
   </div>
 </div>
